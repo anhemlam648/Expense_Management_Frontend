@@ -1,0 +1,40 @@
+/* Header CSS */
+.header {
+  background: linear-gradient(45deg, #2d3e50, #4e6d7a); /* Màu gradient đẹp */
+  color: white;
+  padding: 20px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Tạo bóng nhẹ cho header */
+}
+
+.header .logo {
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase; /* Chữ in hoa */
+}
+
+.navList {
+  list-style-type: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.navItem {
+  color: white;
+  font-size: 1rem;
+  margin-left: 20px;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+  cursor: pointer;
+}
+
+.navItem:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Hiệu ứng hover */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Tạo hiệu ứng bóng khi hover */
+}

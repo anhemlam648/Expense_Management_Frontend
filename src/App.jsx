@@ -1,27 +1,25 @@
-import { useState } from 'react'
-import './App.css'
-import loadingGif from './assets/images.png'
-
+// import { useState } from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './components/Home/home'; 
+import Header from './components/Header/header';
+import Footer from './components/Footer/footer';
 function App() {
-  const [loading, setLoading] = useState(true)
-  setTimeout(() => {
-    setLoading(true)
-  }, 5000)
-
   return (
-    <div className="app-container">
-      <h1>Welcome to Expense Management</h1>
-      {loading ? (
-        <div className="loading-container">
-          <img src={loadingGif} alt="Loading..." />
-          <p>Loading...</p>
+    <Router>
+      <div className="bg-gray-100 font-sans flex min-h-screen">
+        <Header />
+        <div className="flex-1 flex flex-col">
+          <main className="flex-1">
+            <Routes>
+              <Route path="/" element={<Home />} />
+            </Routes>
+          </main>
+          <Footer />
         </div>
-      ) : (
-        <div className="content-container">
-          <p>This is the main content of the application.</p>
-        </div>
-      )}
-    </div>
-  )
+      </div>
+    </Router>
+  );
 }
-export default App
+
+export default App;
+
