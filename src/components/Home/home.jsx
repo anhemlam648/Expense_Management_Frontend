@@ -71,9 +71,9 @@ const Home = () => {
         </div>
       </div>
 
-        <div className="bg-white p-6 rounded-lg shadow">
+        <div className="bg-white p-10 rounded-lg shadow">
           <h4 className="font-bold text-lg mb-4">Contract by Stages</h4>
-          <div className="w-full" style={{ height: '300px' }}>
+          <div className="w-full h-auto" >
             {/* <Bar data={contractByStagesData} options={{ responsive: true, plugins: { legend: { display: false } } }} /> */}
               <Bar data={contractByStagesData} options={{
                 responsive: true, 
