@@ -179,6 +179,6 @@ tr:hover {
 
 @media (max-width: 768px) {
   .chart-container {
-    font-size: 10px; 
+    font-size: 0.625rem; 
   }
 }

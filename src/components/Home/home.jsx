@@ -71,22 +71,19 @@ const Home = () => {
         </div>
       </div>
 
-        <div className="bg-white p-10 rounded-lg shadow">
+        <div className="bg-white p-6 rounded-lg shadow">
           <h4 className="font-bold text-lg mb-4">Contract by Stages</h4>
-          <div className="w-full h-auto" >
+          <div className="chart-container" >
             {/* <Bar data={contractByStagesData} options={{ responsive: true, plugins: { legend: { display: false } } }} /> */}
               <Bar data={contractByStagesData} options={{
-                responsive: true, 
+                responsive: true,
+                maintainAspectRatio: false, 
                 plugins: { legend: { display: false } },
                 scales: 
                 {x: {
                     ticks: {
                       maxRotation: 45,
                       minRotation: 45,
-                      font: {
-                        size: 10 // increase font size for x-axis labels, 
-                      },
-                      padding: 5 // add padding to x-axis labels
                     }
                   },
                   y: {
