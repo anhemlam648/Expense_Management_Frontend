@@ -1,19 +1,19 @@
 /* Header CSS */
 .header {
-  background: linear-gradient(45deg, #2d3e50, #4e6d7a); /* Màu gradient đẹp */
+  background: linear-gradient(45deg, #2d3e50, #4e6d7a); 
   color: white;
-  padding: 20px 30px;
+  padding: 1.25rem 1.875rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Tạo bóng nhẹ cho header */
+  box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.1); 
 }
 
 .header .logo {
-  font-size: 2rem;
+  font-size: 2rem; 
   font-weight: bold;
-  letter-spacing: 1px;
-  text-transform: uppercase; /* Chữ in hoa */
+  letter-spacing: 0.0625rem; 
+  text-transform: uppercase; 
 }
 
 .navList {
@@ -25,16 +25,16 @@
 
 .navItem {
   color: white;
-  font-size: 1rem;
-  margin-left: 20px;
+  font-size: 1rem; 
+  margin-left: 1.25rem;
   text-decoration: none;
-  padding: 8px 16px;
-  border-radius: 5px;
+  padding: 0.5rem 1rem; 
+  border-radius: 0.3125rem; 
   transition: background 0.3s ease;
   cursor: pointer;
 }
 
 .navItem:hover {
-  background-color: rgba(255, 255, 255, 0.2); /* Hiệu ứng hover */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Tạo hiệu ứng bóng khi hover */
+  background-color: rgba(255, 255, 255, 0.2); 
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1); 
 }

@@ -1,24 +1,24 @@
 /* Tối ưu sidebar */
 aside {
-  width: 80px;
+  width: 5rem; 
   background-color: #fff;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 16px;
+  padding: 1rem; 
   position: fixed;
   height: 100%;
 }
 header h1 {
-  font-size: 2.5rem; /* Điều chỉnh kích thước chữ */
-  font-weight: 700; /* Làm đậm chữ */
-  color: #2D3748; /* Màu chữ tối để dễ đọc */
-  text-align: left; /* Căn lề trái */
-  margin-left: 20px; /* Cách lề trái một chút để tạo khoảng trống */
+  font-size: 2.5rem; 
+  font-weight: 700; 
+  color: #2D3748; 
+  text-align: left; 
+  margin-left: 1.25rem; 
 }
 .sidebar-logo {
-  font-size: 24px;
+  font-size: 1.5rem; 
   font-weight: bold;
   color: #4e6d7a;
   text-align: center;
@@ -31,7 +31,7 @@ header h1 {
 }
 
 .sidebar-icon {
-  padding: 16px;
+  padding: 1rem; 
   cursor: pointer;
   transition: background 0.3s ease, color 0.3s ease;
 }
@@ -43,61 +43,61 @@ header h1 {
 
 .sidebar-footer {
   text-align: center;
-  margin-top: 16px;
+  margin-top: 1rem; 
 }
 
 .sidebar-footer img {
-  width: 40px;
-  height: 40px;
+  width: 2.5rem; 
+  height: 2.5rem; 
   border-radius: 50%;
 }
 
-/* Tối ưu section thống kê */
+
 .stat-card {
   background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.25rem; 
+  border-radius: 0.5rem; 
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
 .stat-card .stat-title {
-  font-size: 1.2rem;
+  font-size: 1.2rem; 
   color: #888;
 }
 
 .stat-card .stat-value {
-  font-size: 2rem;
+  font-size: 2rem; 
   font-weight: bold;
   color: #333;
 }
 
 .grid-stats {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 16px;
-  margin-bottom: 40px;
+  grid-template-columns: repeat(auto-fill, minmax(15.625rem, 1fr)); 
+  gap: 1rem; 
+  margin-bottom: 2.5rem; 
 }
 
 .chart-container {
   background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.25rem; 
+  border-radius: 0.5rem; 
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
 }
 
 .chart-container h4 {
-  font-size: 1.2rem;
+  font-size: 1.2rem; 
   color: #333;
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem; 
 }
 
 .table-container {
   background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-top: 40px;
+  padding: 1.25rem; 
+  border-radius: 0.5rem; 
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+  margin-top: 2.5rem; 
 }
 
 table {
@@ -106,9 +106,9 @@ table {
 }
 
 th, td {
-  padding: 12px;
+  padding: 0.75rem; 
   text-align: left;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 0.0625rem solid #ddd; 
 }
 
 th {
@@ -117,7 +117,7 @@ th {
 }
 
 td {
-  font-size: 0.9rem;
+  font-size: 0.9rem; 
   color: #555;
 }
 
@@ -126,8 +126,8 @@ tr:hover {
 }
 
 .status-pill {
-  padding: 6px 12px;
-  border-radius: 12px;
+  padding: 0.375rem 0.75rem; 
+  border-radius: 1rem; 
   color: white;
 }
 
@@ -146,33 +146,33 @@ tr:hover {
 /* Progress Bar */
 .progress-bar {
   background-color: #f0f0f0;
-  border-radius: 8px;
-  height: 10px;
+  border-radius: 0.5rem;
+  height: 0.625rem; 
   width: 100%;
 }
 
 .progress-bar span {
   display: block;
   height: 100%;
-  border-radius: 8px;
+  border-radius: 0.5rem; 
 }
 
 /* Cycle Time Card */
 .cycle-time-card {
   background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.25rem; 
+  border-radius: 0.5rem; 
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
 .cycle-time-card .cycle-time {
-  font-size: 2rem;
+  font-size: 2rem; 
   font-weight: bold;
   color: #333;
 }
 
 .cycle-time-card .cycle-label {
-  font-size: 1rem;
+  font-size: 1rem; 
   color: #888;
 }
