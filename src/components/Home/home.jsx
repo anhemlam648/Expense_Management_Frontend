@@ -74,7 +74,27 @@ const Home = () => {
         <div className="bg-white p-6 rounded-lg shadow">
           <h4 className="font-bold text-lg mb-4">Contract by Stages</h4>
           <div className="w-full h-56">
-            <Bar data={contractByStagesData} options={{ responsive: true, plugins: { legend: { display: false } } }} />
+            {/* <Bar data={contractByStagesData} options={{ responsive: true, plugins: { legend: { display: false } } }} /> */}
+              <Bar data={contractByStagesData} options={{
+                responsive: true, 
+                plugins: { legend: { display: false } },
+                scales: 
+                {x: {
+                    ticks: {
+                      maxRotation: 45,
+                      minRotation: 45,
+                      font: {
+                        size: 12, 
+                      }
+                    }
+                  },
+                  y: {
+                    ticks: {
+                      display: false // hide y-axis labels
+                    }
+                  }
+                }
+              }} />
           </div>
         </div>
 
