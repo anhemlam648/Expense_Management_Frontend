@@ -73,7 +73,7 @@ const Home = () => {
 
         <div className="bg-white p-6 rounded-lg shadow">
           <h4 className="font-bold text-lg mb-4">Contract by Stages</h4>
-          <div className="w-full h-auto sm:h-40 h-56">
+          <div className="chart-container">
             {/* <Bar data={contractByStagesData} options={{ responsive: true, plugins: { legend: { display: false } } }} /> */}
               <Bar data={contractByStagesData} options={{
                 responsive: true, 
