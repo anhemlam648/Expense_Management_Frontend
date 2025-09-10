@@ -81,7 +81,7 @@ const Home = () => {
                 scales: 
                 {x: {
                     ticks: {
-                      maxRotation: 45,
+                      maxRotation: 90,
                       minRotation: 45,
                       font: {
                         size: 12, 
