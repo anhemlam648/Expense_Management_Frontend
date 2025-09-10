@@ -84,7 +84,7 @@ const Home = () => {
                       maxRotation: 90,
                       minRotation: 45,
                       font: {
-                        size: 12, 
+                        size: 15 // increase font size for x-axis labels, 
                       }
                     }
                   },
