@@ -73,7 +73,7 @@ const Home = () => {
 
         <div className="bg-white p-6 rounded-lg shadow">
           <h4 className="font-bold text-lg mb-4">Contract by Stages</h4>
-          <div className="chart-container">
+          <div className="w-full" style={{ height: '300px' }}>
             {/* <Bar data={contractByStagesData} options={{ responsive: true, plugins: { legend: { display: false } } }} /> */}
               <Bar data={contractByStagesData} options={{
                 responsive: true, 
@@ -81,11 +81,12 @@ const Home = () => {
                 scales: 
                 {x: {
                     ticks: {
-                      maxRotation: 90,
+                      maxRotation: 45,
                       minRotation: 45,
                       font: {
-                        size: 12 // increase font size for x-axis labels, 
-                      }
+                        size: 10 // increase font size for x-axis labels, 
+                      },
+                      padding: 5 // add padding to x-axis labels
                     }
                   },
                   y: {
