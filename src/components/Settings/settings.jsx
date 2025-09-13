@@ -1,138 +1,103 @@
-import React from 'react';
-import { Bar, Doughnut } from 'react-chartjs-2'; // Import chart
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement } from 'chart.js';
+import React, { useState } from 'react';
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement);
+// Sample settings data (temporary)
+const Settings = () => {
+  const [theme, setTheme] = useState("light");
+  const [notifications, setNotifications] = useState(true);
+  const [email, setEmail] = useState("user@gmail.com");
 
-const contractByStagesData = {
-  labels: ['Income', 'Food', 'Transportation', 'Entertainment'],
-  datasets: [{
-    label: 'Contracts',
-    data: [350, 200, 450, 150],
-    backgroundColor: ['#2dd4bf', '#fbbf24', '#f87171', '#9ca3af'],
-    borderColor: ['#2dd4bf', '#fbbf24', '#f87171', '#9ca3af'],
-    borderWidth: 1,
-    borderRadius: 4,
-    barThickness: 30,
-  }],
-};
+  const handleThemeChange = (e) => {
+    setTheme(e.target.value);
+  };
 
-const contractExpiringData = {
-  labels: ['Within 60 days', 'Within 30 days', 'Expired'],
-  datasets: [{
-    data: [45, 25, 30],
-    backgroundColor: ['#2dd4bf', '#fbbf24', '#f87171'],
-    hoverBackgroundColor: ['#14b8a6', '#f59e0b', '#ef4444'],
-    borderColor: '#fff',
-    borderWidth: 4,
-  }],
-};
+  const handleNotificationsChange = () => {
+    setNotifications(!notifications);
+  };
 
-const Categories = () => {
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handleSave = () => {
+    alert("Settings saved!");
+  };
+
   return (
     <main className="flex-1 p-8">
       <header className="flex justify-between items-center mb-8">
         <h1 className="text-3xl font-bold text-gray-800 ml-4">Settings</h1>
       </header>
 
-      {/* Total */}
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <div className="bg-white p-4 rounded-lg shadow">
-          <div className="flex items-center">
-            <div className="w-2 h-2 rounded-full mr-2 bg-teal-500"></div>
-            <h3 className="text-sm font-medium text-gray-500">Total Income</h3>
-          </div>
-          <p className="text-2xl font-bold mt-2">$2,500</p>
-        </div>
-        <div className="bg-white p-4 rounded-lg shadow">
-          <div className="flex items-center">
-            <div className="w-2 h-2 rounded-full mr-2 bg-amber-500"></div>
-            <h3 className="text-sm font-medium text-gray-500">Total Expenses</h3>
-          </div>
-          <p className="text-2xl font-bold mt-2">$1,200</p>
-        </div>
-        <div className="bg-white p-4 rounded-lg shadow">
-          <div className="flex items-center">
-            <div className="w-2 h-2 rounded-full mr-2 bg-blue-500"></div>
-            <h3 className="text-sm font-medium text-gray-500">Remaining Balance</h3>
-          </div>
-          <p className="text-2xl font-bold mt-2">$1,140</p>
+      {/* User Settings Section */}
+      <section className="bg-white p-6 rounded-lg shadow mb-8">
+        <h4 className="font-bold text-lg mb-4">User Information</h4>
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-500">Email</label>
+          <input
+            type="email"
+            value={email}
+            onChange={handleEmailChange}
+            className="mt-1 block w-full p-2 border border-gray-300 rounded"
+          />
         </div>
       </section>
 
-      {/* Chart Income vs Expenses and Contract by Stages */}
-      <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      <div className="lg:col-span-2 space-y-6">
-        <div className="bg-white p-6 rounded-lg shadow">
-          <h4 className="font-bold text-lg mb-4">Income vs Expenses</h4>
-          <div className="w-full max-w-[400px] mx-auto">
-            <Doughnut data={contractExpiringData} options={{ responsive: true, plugins: { legend: { position: 'bottom' } } }} />
-          </div>
+      {/* Theme Settings */}
+      <section className="bg-white p-6 rounded-lg shadow mb-8">
+        <h4 className="font-bold text-lg mb-4">Theme</h4>
+        <div>
+          <label className="mr-4">
+            <input
+              type="radio"
+              name="theme"
+              value="light"
+              checked={theme === "light"}
+              onChange={handleThemeChange}
+              className="mr-2"
+            />
+            Light Mode
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="theme"
+              value="dark"
+              checked={theme === "dark"}
+              onChange={handleThemeChange}
+              className="mr-2"
+            />
+            Dark Mode
+          </label>
         </div>
-      </div>
-
-        <div className="bg-white p-6 rounded-lg shadow">
-          <h4 className="font-bold text-lg mb-4">Contract by Stages</h4>
-          <div className="chart-container" >
-            {/* <Bar data={contractByStagesData} options={{ responsive: true, plugins: { legend: { display: false } } }} /> */}
-              <Bar data={contractByStagesData} options={{
-                responsive: true,
-                maintainAspectRatio: false, 
-                plugins: { legend: { display: false } },
-                scales: 
-                {x: {
-                    ticks: {
-                      maxRotation: 45,
-                      minRotation: 45,
-                    }
-                  },
-                  y: {
-                    ticks: {
-                      display: false // hide y-axis labels
-                    }
-                  }
-                }
-              }} />
-          </div>
-        </div>
-
-        <div className="bg-white p-6 rounded-lg shadow">
-          <h4 className="font-bold text-lg mb-4">Expenses by Category</h4>
-          {/* Expenses Category Table */}
-          <table className="w-full text-left">
-            <thead>
-              <tr className="text-sm text-gray-500 border-b">
-                <th className="py-2 font-medium">Category</th>
-                <th className="py-2 font-medium">Amount</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="border-b">
-                <td className="py-4 text-gray-600">Food</td>
-                <td className="py-4 text-gray-800">$500</td>
-              </tr>
-              <tr className="border-b">
-                <td className="py-4 text-gray-600">Transportation</td>
-                <td className="py-4 text-gray-800">$400</td>
-              </tr>
-              <tr className="border-b">
-                <td className="py-4 text-gray-600">Entertainment</td>
-                <td className="py-4 text-gray-800">$300</td>
-              </tr>
-              <tr className="border-b">
-                <td className="py-4 text-gray-600">Bills</td>
-                <td className="py-4 text-gray-800">$200</td>
-              </tr>
-              {/* You can add more categories as needed */}
-            </tbody>
-          </table>
-      </div>
       </section>
 
-      
+      {/* Notification Settings */}
+      <section className="bg-white p-6 rounded-lg shadow mb-8">
+        <h4 className="font-bold text-lg mb-4">Notifications</h4>
+        <div>
+          <label className="inline-flex items-center">
+            <input
+              type="checkbox"
+              checked={notifications}
+              onChange={handleNotificationsChange}
+              className="form-checkbox h-5 w-5 text-teal-600"
+            />
+            <span className="ml-2 text-gray-600">Enable email notifications</span>
+          </label>
+        </div>
+      </section>
 
+      {/* Save Button */}
+      <div className="bg-white p-6 rounded-lg shadow">
+        <button
+          onClick={handleSave}
+          className="w-full py-2 px-4 bg-teal-600 text-white font-bold rounded hover:bg-teal-700"
+        >
+          Save Settings
+        </button>
+      </div>
     </main>
   );
 };
 
-export default Categories;
+export default Settings;
