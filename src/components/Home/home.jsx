@@ -2,16 +2,24 @@ import React from 'react';
 import { Bar, Doughnut } from 'react-chartjs-2'; // Import chart
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement } from 'chart.js';
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement);
+ChartJS.register(
+  CategoryScale, 
+  LinearScale, 
+  BarElement, 
+  Title, 
+  Tooltip, 
+  Legend, 
+  ArcElement
+);
 
 const contractByStagesData = {
   labels: ['Income', 'Food', 'Transportation', 'Entertainment'],
   datasets: [{
     label: 'Contracts',
     data: [350, 200, 450, 150],
-    backgroundColor: ['#2dd4bf', '#fbbf24', '#f87171', '#9ca3af'],
-    borderColor: ['#2dd4bf', '#fbbf24', '#f87171', '#9ca3af'],
-    borderWidth: 1,
+    backgroundColor: ['#4CAF50', '#FF9800', '#F44336', '#2196F3'],
+      borderColor: ['#4CAF50', '#FF9800', '#F44336', '#2196F3'],
+      borderWidth: 1,
     borderRadius: 4,
     barThickness: 30,
   }],
@@ -21,8 +29,8 @@ const contractExpiringData = {
   labels: ['Within 60 days', 'Within 30 days', 'Expired'],
   datasets: [{
     data: [45, 25, 30],
-    backgroundColor: ['#2dd4bf', '#fbbf24', '#f87171'],
-    hoverBackgroundColor: ['#14b8a6', '#f59e0b', '#ef4444'],
+    backgroundColor: ['#2dd4bf', '#fbbf24', '#F44336'],
+    hoverBackgroundColor: ['#14b8a6', '#f59e0b', '#F44336'],
     borderColor: '#fff',
     borderWidth: 4,
   }],
