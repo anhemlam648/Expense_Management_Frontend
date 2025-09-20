@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom'; 
 import '../Header/Style.css';
 
 const Header = () => {
@@ -9,6 +9,22 @@ const Header = () => {
     navigate(path); 
   };
 
+  const user = JSON.parse(localStorage.getItem('user'));
+  const token = localStorage.getItem('token');
+
+  if (!token || !user) return null;
+
+  const getInitial = () => {
+    if (user?.email && user.email.trim().length > 0) {
+      return user.email.charAt(0).toUpperCase();
+    }
+    return 'U';
+  };
+
+  
+  const initial = getInitial();
+
+ 
   // Sidebar Icon component
   const SidebarIcon = ({ icon, label, path }) => (
     <button
@@ -46,11 +62,19 @@ const Header = () => {
       </nav>
       {/* User Avatar */}
       <div className="mt-auto mb-4">
-        <img 
-          src="https://placehold.co/40x40/E2E8F0/4A5568?text=N" 
-          alt="User Avatar" 
-          className="w-10 h-10 rounded-full" 
-        />
+        <div className="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center text-gray-700 font-bold text-lg">
+          {initial}
+        </div>
+        <button
+          onClick={() => {
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            navigate('/login');
+          }}
+          className="text-xs text-red-500 hover:underline"
+        >
+          Logout
+        </button>
       </div>
     </aside>
   );
