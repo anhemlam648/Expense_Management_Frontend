@@ -133,7 +133,7 @@ const Register = () => {
         </form>
 
         <div className="text-sm text-center text-gray-500">
-          Already have an account?{' '}
+          Already have an account?{' '}       {/* Check if user is already logged in */}
           <Link to="/login" className="text-blue-500 hover:underline">
             Sign in
           </Link>
