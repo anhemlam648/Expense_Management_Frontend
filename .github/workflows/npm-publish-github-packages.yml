@@ -2,7 +2,7 @@ name: Node.js Package
 
 on:
   release:
-    types: [created]  # Chạy workflow khi release được tạo
+    types: [created]  # Run workflow when create release 
 
 jobs:
   build:
@@ -27,7 +27,7 @@ jobs:
         with:
           node-version: 20
           registry-url: https://npm.pkg.github.com/  # GitHub Packages is registry
-      - run: npm ci  # Cài đặt lại các dependencies
-      - run: npm publish  # Publish package lên GitHub Packages
+      - run: npm ci  # Install dependencies
+      - run: npm publish  # Publish package on GitHub Packages
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}  # GitHub Token automatic
