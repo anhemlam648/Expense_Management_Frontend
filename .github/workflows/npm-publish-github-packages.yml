@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@v4  
       - uses: actions/setup-node@v4  
         with:
-          node-version: 20  # Phiên bản Node.js
+          node-version: 20  
       - run: npm ci 
       - run: npm test  
 
@@ -20,10 +20,10 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      packages: write  # Quyền để publish package lên GitHub Packages
+      packages: write  # Role
     steps:
-      - uses: actions/checkout@v4  # Checkout lại mã nguồn
-      - uses: actions/setup-node@v4  # Cài đặt Node.js
+      - uses: actions/checkout@v4  
+      - uses: actions/setup-node@v4 
         with:
           node-version: 20
           registry-url: https://npm.pkg.github.com/  # GitHub Packages is registry
