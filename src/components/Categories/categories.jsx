@@ -34,7 +34,11 @@ const Categories = () => {
 
   return (
     <div className="p-8">
-      <h1 className="text-3xl font-bold text-gray-800 mb-6">Manage Categories</h1>
+      <header className="flex justify-between items-center mb-8">
+         <h1 className="text-3xl font-bold ml-4 text-green-500 dark:text-green-400">
+             Category Management
+          </h1>
+      </header>
 
       {/* Form Add Category */}
       <div className="bg-white p-6 rounded-lg shadow-md mb-6">
