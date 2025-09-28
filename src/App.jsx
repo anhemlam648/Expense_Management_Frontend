@@ -25,16 +25,16 @@ function AppContent() {
       <div className="flex-1 flex flex-col">
         <main className="flex-1">
           <Routes>
-            {/* <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} /> */}
-            {/* <Route path="/" element={<PrivateRoute><Home /></PrivateRoute>} /> */}
-            <Route path="/" element={<Home />} />
+            {/* <Route path="/" element={<Home />} />
             <Route path="/Categories" element={<Categories />} />
             <Route path="/Statistics" element={<Statistics />} />
-            <Route path="/Settings" element={<Settings />} />
-            {/* <Route path="/Categories" element={<PrivateRoute><Categories /></PrivateRoute>} />
+            <Route path="/Settings" element={<Settings />} /> */}
+            {/* <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} /> */}
+            <Route path="/" element={<PrivateRoute><Home /></PrivateRoute>} />
+            <Route path="/Categories" element={<PrivateRoute><Categories /></PrivateRoute>} />
             <Route path="/Statistics" element={<PrivateRoute><Statistics /></PrivateRoute>} />
-            <Route path="/Settings" element={<PrivateRoute><Settings /></PrivateRoute>} /> */}
+            <Route path="/Settings" element={<PrivateRoute><Settings /></PrivateRoute>} />
           </Routes>
         </main>
         <Footer />
