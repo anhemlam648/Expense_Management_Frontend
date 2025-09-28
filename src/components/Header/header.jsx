@@ -71,21 +71,21 @@ const Header = () => {
         />
       </nav>
       {/* User Avatar */}
-      <div className="mt-auto mb-4 flex flex-col items-center">
-        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center text-white font-bold text-lg shadow-md">
-          {initial}
+        <div className="flex flex-col items-center mb-4 mt-5">
+          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center text-white font-bold text-lg shadow-md">
+            {initial}
+          </div>
+          <button
+            onClick={() => {
+              localStorage.removeItem("token");
+              localStorage.removeItem("user");
+              navigate("/login");
+            }}
+            className="text-xs text-red-500 hover:underline mt-2"
+          >
+            Logout
+          </button>
         </div>
-        <button
-          onClick={() => {
-            localStorage.removeItem('token');
-            localStorage.removeItem('user');
-            navigate('/login');
-          }}
-          className="text-xs text-red-500 hover:underline mt-2"
-        >
-          Logout
-        </button>
-      </div>
     </aside>
   );
 };
