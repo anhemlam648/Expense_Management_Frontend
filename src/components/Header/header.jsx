@@ -15,15 +15,17 @@ const Header = () => {
 
   if (!token || !user) return null;
 
-  const getInitial = () => {
-    if (user?.email && user.email.trim().length > 0) {
-      return user.email.charAt(0).toUpperCase();
-    }
-    return 'U';
-  };
+  // const getInitial = () => {
+  //   if (user?.email && user.email.trim().length > 0) {
+  //     return user.email.charAt(0).toUpperCase();
+  //   }
+  //   return 'U';
+  // };
 
-  const initial = getInitial();
+  // const initial = getInitial();
 
+  const username = "Alice Nguyen";
+  const initial = username.charAt(0).toUpperCase();
   const SidebarIcon = ({ icon, label, path }) => (
     <button
       onClick={() => handleNavigation(path)} 
