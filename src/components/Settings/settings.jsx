@@ -8,7 +8,7 @@ const Settings = () => {
   // const [username, setUsername] = useState("");
   const { theme, setTheme } = useContext(ThemeContext); 
   const [selectedTheme, setSelectedTheme] = useState(theme); 
-  // const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState(null);
 
 // Fetch user profile
@@ -84,6 +84,7 @@ const Settings = () => {
 
   const handleSave = async () => {
       setTheme(selectedTheme); //Test
+      setLoading(false);
       setMessage("Settings saved successfully!");
   };
 
