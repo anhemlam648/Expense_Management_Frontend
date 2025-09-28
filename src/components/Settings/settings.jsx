@@ -50,36 +50,36 @@ const Settings = () => {
   };
 
   const handleSave = async () => {
-    // if (!username.trim()) {
-    //   setMessage("Username cannot be empty.");
-    //   return;
-    // }
+    if (!username.trim()) {
+      setMessage("Username cannot be empty.");
+      return;
+    }
 
-    // setLoading(true);
-    // setMessage(null);
+    setLoading(true);
+    setMessage(null);
 
-    // try {
-    //   const res = await axios.put(
-    //     "http://localhost:8080/api/user/update/profile",
-    //     { username: username.trim() },
-    //     {
-    //       headers: {
-    //         Authorization: `Bearer ${token}`,
-    //       },
-    //     }
-    //   );
+    try {
+      const res = await axios.put(
+        "http://localhost:8080/api/user/update/profile",
+        { username: username.trim() },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
-    //   setUser(res.data);
-    //   setMessage("Settings saved successfully!");
+      setUser(res.data);
+      setMessage("Settings saved successfully!");
 
       setTheme(selectedTheme);
-    // } catch (error) {
-    //   setMessage(
-    //     error.response?.data || "Failed to save settings. Please try again."
-    //   );
-    // } finally {
-    //   setLoading(false);
-    // }
+    } catch (error) {
+      setMessage(
+        error.response?.data || "Failed to save settings. Please try again."
+      );
+    } finally {
+      setLoading(false);
+    }
   };
 
   // const handleSave = async () => {
