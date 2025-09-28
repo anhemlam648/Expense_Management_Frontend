@@ -62,7 +62,7 @@ const Header = () => {
       </nav>
       {/* User Avatar */}
       <div className="mt-auto mb-4">
-        <div className="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center text-gray-700 font-bold text-lg">
+        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center text-white font-bold text-lg shadow-md">
           {initial}
         </div>
         <button
