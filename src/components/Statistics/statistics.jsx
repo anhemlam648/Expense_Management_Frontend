@@ -45,7 +45,7 @@ const Statistics = () => {
   return (
     <main className="flex-1 p-8">
       <header className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-bold text-gray-800 ml-4">Statistics Management</h1>
+        <h1 className="text-3xl font-bold ml-4 text-green-500 dark:text-green-400">Statistics Management</h1>
       </header>
 
       {/* Total */}
@@ -55,21 +55,21 @@ const Statistics = () => {
             <div className="w-2 h-2 rounded-full mr-2 bg-teal-500"></div>
             <h3 className="text-sm font-medium text-gray-500">Total Income</h3>
           </div>
-          <p className="text-2xl font-bold mt-2">$2,500</p>
+          <p className="text-2xl font-bold mt-2 text-gray-900 dark:text-gray-100">$2,500</p>
         </div>
         <div className="bg-white p-4 rounded-lg shadow">
           <div className="flex items-center">
             <div className="w-2 h-2 rounded-full mr-2 bg-amber-500"></div>
             <h3 className="text-sm font-medium text-gray-500">Total Expenses</h3>
           </div>
-          <p className="text-2xl font-bold mt-2">$1,200</p>
+          <p className="text-2xl font-bold mt-2 text-gray-900 dark:text-gray-100">$1,200</p>
         </div>
         <div className="bg-white p-4 rounded-lg shadow">
           <div className="flex items-center">
             <div className="w-2 h-2 rounded-full mr-2 bg-blue-500"></div>
             <h3 className="text-sm font-medium text-gray-500">Remaining Balance</h3>
           </div>
-          <p className="text-2xl font-bold mt-2">$1,140</p>
+          <p className="text-2xl font-bold mt-2 text-gray-900 dark:text-gray-100">$1,140</p>
         </div>
       </section>
 

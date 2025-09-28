@@ -1,0 +1,8 @@
+/* App.css */
+body.light {
+  background-color: #fff;
+}
+
+body.dark {
+  background-color: #374d51; 
+}
