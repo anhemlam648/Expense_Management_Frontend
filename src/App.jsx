@@ -19,8 +19,8 @@ function App() {
         <div className="flex-1 flex flex-col">
           <main className="flex-1">
             <Routes>
-              {/* <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} /> */}
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
               <Route path="/" element={<PrivateRoute><Home /></PrivateRoute>}/>
               <Route path="/Categories" element={<PrivateRoute><Categories /></PrivateRoute>} />
               <Route path="/Statistics" element={<PrivateRoute><Statistics /></PrivateRoute>} />
