@@ -65,7 +65,7 @@ const Categories = () => {
       );
 
       if (res.data === true) {
-        fetchCategories(); // Refresh list
+        fetchCategories(); 
         setCategoryName('');
         setCategoryType('EXPENSE');
       } else {
@@ -77,9 +77,9 @@ const Categories = () => {
     }
   };
   
-  useEffect(() => {
-    fetchCategories();
-  }, []);
+  // useEffect(() => {
+  //   fetchCategories();
+  // }, []);
   // const handleDeleteCategory = (id) => {
   //   setCategories(categories.filter((category) => category.id !== id));
   // };
