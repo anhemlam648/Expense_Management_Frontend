@@ -1,37 +1,102 @@
 import React from 'react';
 import { useState } from 'react';
-
+import axios from 'axios';
+import { useEffect } from 'react';
 // Sample categories data (temporary)
-const initialCategories = [
-  { id: 1, name: 'Food', type: 'EXPENSE' },
-  { id: 2, name: 'Transportation', type: 'EXPENSE' },
-  { id: 3, name: 'Salary', type: 'INCOME' },
-  { id: 4, name: 'Entertainment', type: 'EXPENSE' },
-];
+// const initialCategories = [
+//   { id: 1, name: 'Food', type: 'EXPENSE' },
+//   { id: 2, name: 'Transportation', type: 'EXPENSE' },
+//   { id: 3, name: 'Salary', type: 'INCOME' },
+//   { id: 4, name: 'Entertainment', type: 'EXPENSE' },
+// ];
 
 
 const Categories = () => {
-  const [categories, setCategories] = useState(initialCategories);
+  // const [categories, setCategories] = useState(initialCategories);
+  const [categories, setCategories] = useState([]);
   const [categoryName, setCategoryName] = useState('');
   const [categoryType, setCategoryType] = useState('EXPENSE');
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
-  const handleAddCategory = () => {
-    if (!categoryName) return;
+  const token = localStorage.getItem("token");
 
-    const newCategory = {
-      id: categories.length + 1, // Simple ID generation
-      type: categoryType,
-    };
-
-    setCategories([...categories, newCategory]);
-    setCategoryName('');
-    setCategoryType('EXPENSE');
+  // Load categories from API
+  const fetchCategories = async () => {
+    try {
+    const res = await axios.get("http://localhost:8080/api/categories/list", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+      setCategories(res.data);
+    } catch (err) {
+      console.error(err);
+      setError('Failed to load categories');
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const handleDeleteCategory = (id) => {
-    setCategories(categories.filter((category) => category.id !== id));
-  };
+  // const handleAddCategory = () => {
+  //   if (!categoryName) return;
 
+  //   const newCategory = {
+  //     id: categories.length + 1, // Simple ID generation
+  //     type: categoryType,
+  //   };
+
+  //   setCategories([...categories, newCategory]);
+  //   setCategoryName('');
+  //   setCategoryType('EXPENSE');
+  // };
+  const handleAddCategory = async () => {
+    if (!categoryName.trim()) return;
+
+    try {
+      const res = await axios.post(
+        "http://localhost:8080/api/categories/add",
+        { name: categoryName.trim(), type: categoryType }, 
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        } 
+      );
+
+      if (res.data === true) {
+        fetchCategories(); // Refresh list
+        setCategoryName('');
+        setCategoryType('EXPENSE');
+      } else {
+        alert('Failed to add category.');
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Error adding category.');
+    }
+  };
+  
+  useEffect(() => {
+    fetchCategories();
+  }, []);
+  // const handleDeleteCategory = (id) => {
+  //   setCategories(categories.filter((category) => category.id !== id));
+  // };
+
+      const handleDeleteCategory = async (id) => {
+    try {
+      await axios.delete(`http://localhost:8080/api/categories/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setCategories(categories.filter((c) => c.id !== id));
+    } catch (err) {
+      console.error(err);
+      alert('Error deleting category.');
+    }
+  };
   return (
     <div className="p-8">
       <header className="flex justify-between items-center mb-8">
@@ -74,11 +139,11 @@ const Categories = () => {
         </button>
       </div>
 
-     {/* Category List */}
+     {/* Category List
       <div className="bg-white p-6 rounded-lg shadow-md">
         <h2 className="text-lg font-semibold text-gray-700 mb-4">List Categories</h2>
         
-        {/* Display */}
+        {/* Display 
         <div className="space-y-4">
           {categories.map((category) => (
             <div key={category.id} className="flex justify-between items-center p-4 bg-gray-50 rounded-lg shadow-md">
@@ -103,6 +168,45 @@ const Categories = () => {
             </div>
           ))}
         </div>
+      </div>
+    </div> */}
+      {/* Category List */}
+      <div className="bg-white p-6 rounded-lg shadow-md">
+        <h2 className="text-lg font-semibold text-gray-700 mb-4">List Categories</h2>
+
+        {loading ? (
+          <p>Loading categories...</p>
+        ) : error ? (
+          <p className="text-red-500">{error}</p>
+        ) : (
+          <div className="space-y-4">
+            {categories.map((category) => (
+              <div
+                key={category.id}
+                className="flex justify-between items-center p-4 bg-gray-50 rounded-lg shadow-md"
+              >
+                <div>
+                  <p className="font-semibold text-gray-800">{category.name}</p>
+                  <p className="text-sm text-gray-500">{category.type}</p>
+                </div>
+                <div className="flex space-x-2">
+                  <button
+                    className="text-yellow-500 hover:text-yellow-700 text-sm"
+                    onClick={() => alert(`Edit category ${category.name}`)}
+                  >
+                    Edit
+                  </button>
+                  <button
+                    className="text-red-500 hover:text-red-700 text-sm"
+                    onClick={() => handleDeleteCategory(category.id)}
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

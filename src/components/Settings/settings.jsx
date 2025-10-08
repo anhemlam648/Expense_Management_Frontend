@@ -1,36 +1,36 @@
 import React, { useEffect, useState, useContext } from "react";
-// import axios from "axios";
+import axios from "axios";
 import { ThemeContext } from "../ThemeContext/themecontext";
 
 const Settings = () => {
-  // const token = localStorage.getItem("token");
-  // const [user, setUser] = useState(null);
-  // const [username, setUsername] = useState("");
+  const token = localStorage.getItem("token");
+  const [user, setUser] = useState(null);
+  const [username, setUsername] = useState("");
   const { theme, setTheme } = useContext(ThemeContext); 
   const [selectedTheme, setSelectedTheme] = useState(theme); 
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState(null);
 
 // Fetch user profile
-  // useEffect(() => {
-  //   const fetchUserProfile = async () => {
-  //     try {
-  //       const res = await axios.get("http://localhost:8080/api/user/profile", {
-  //         headers: {
-  //           Authorization: `Bearer ${token}`,
-  //         },
-  //       });
-  //       setUser(res.data);
-  //       setUsername(res.data.username || "");
-  //     } catch (error) {
-  //       console.error("Failed to load user profile:", error);
-  //     }
-  //   };
+  useEffect(() => {
+    const fetchUserProfile = async () => {
+      try {
+        const res = await axios.get("http://localhost:8080/api/user/profile", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setUser(res.data);
+        setUsername(res.data.username || "");
+      } catch (error) {
+        console.error("Failed to load user profile:", error);
+      }
+    };
 
-  //   if (token) {
-  //     fetchUserProfile();
-  //   }
-  // }, [token]);
+    if (token) {
+      fetchUserProfile();
+    }
+  }, [token]);
 
 
   useEffect(() => {
@@ -38,55 +38,55 @@ const Settings = () => {
   }, [theme]);
 
   // Avatar initials
-  // const getInitial = () => {
-  //   if (user?.email && user.email.trim().length > 0) {
-  //     return user.email.charAt(0).toUpperCase();
-  //   }
-  //   return "U";
-  // };
+  const getInitial = () => {
+    if (user?.email && user.email.trim().length > 0) {
+      return user.email.charAt(0).toUpperCase();
+    }
+    return "U";
+  };
 
   const handleThemeChange = (e) => {
     setSelectedTheme(e.target.value);
   };
 
-  // const handleSave = async () => {
-  //   if (!username.trim()) {
-  //     setMessage("Username cannot be empty.");
-  //     return;
-  //   }
-
-  //   setLoading(true);
-  //   setMessage(null);
-
-  //   try {
-  //     const res = await axios.put(
-  //       "http://localhost:8080/api/user/update/profile",
-  //       { username: username.trim() },
-  //       {
-  //         headers: {
-  //           Authorization: `Bearer ${token}`,
-  //         },
-  //       }
-  //     );
-
-  //     setUser(res.data);
-  //     setMessage("Settings saved successfully!");
-
-  //     setTheme(selectedTheme);
-  //   } catch (error) {
-  //     setMessage(
-  //       error.response?.data || "Failed to save settings. Please try again."
-  //     );
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
   const handleSave = async () => {
-      setTheme(selectedTheme); //Test
-      setLoading(false);
+    if (!username.trim()) {
+      setMessage("Username cannot be empty.");
+      return;
+    }
+
+    setLoading(true);
+    setMessage(null);
+
+    try {
+      const res = await axios.put(
+        "http://localhost:8080/api/user/update/profile",
+        { username: username.trim() },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      setUser(res.data);
       setMessage("Settings saved successfully!");
+
+      setTheme(selectedTheme);
+    } catch (error) {
+      setMessage(
+        error.response?.data || "Failed to save settings. Please try again."
+      );
+    } finally {
+      setLoading(false);
+    }
   };
+
+  // const handleSave = async () => {
+  //     setTheme(selectedTheme); //Test
+  //     setLoading(false);
+  //     setMessage("Settings saved successfully!");
+  // };
 
   return (
     <div
@@ -111,7 +111,7 @@ const Settings = () => {
         </header>
 
         {/* Profile Section */}
-        {/* {user ? (
+        {user ? (
           <section
             className={`p-6 sm:p-8 rounded-xl shadow-md mb-8 ${
               theme === "dark" ? "bg-gray-800" : "bg-white"
@@ -120,10 +120,10 @@ const Settings = () => {
             <div className="flex flex-col items-center text-center">
               <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-teal-400 to-teal-600 text-white rounded-full shadow-lg flex items-center justify-center text-3xl sm:text-4xl font-bold mb-4">
                 {getInitial()}
-              </div> */}
+              </div> 
 
               {/* Editable username */}
-              {/* <input
+              <input
                 type="text"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
@@ -146,7 +146,7 @@ const Settings = () => {
           </section>
         ) : (
           <p className="text-center text-gray-500 mb-8">Loading profile...</p>
-        )} */}
+        )} 
 
         {/* Theme Settings */}
         <section
