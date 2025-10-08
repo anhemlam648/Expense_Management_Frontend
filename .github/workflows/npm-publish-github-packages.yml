@@ -1,32 +1,25 @@
-name: Node.js Package
+name: Check Node.js Project
 
 on:
   release:
-    types: [created]  # Run workflow when create release 
+    types: [created] 
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4  
-      - uses: actions/setup-node@v4  
-        with:
-          node-version: 20  
-      - run: npm ci 
 
-  publish-gpr:
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write  # Role
     steps:
-      - uses: actions/checkout@v4  
-      - uses: actions/setup-node@v4 
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 20
-          registry-url: https://npm.pkg.github.com/  # GitHub Packages is registry
-      - run: npm ci  # Install dependencies
-      - run: npm publish  
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}  # GitHub Token automatic
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests (optional)
+        run: npm test
+
