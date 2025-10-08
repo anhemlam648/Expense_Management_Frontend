@@ -10,7 +10,6 @@ import { useEffect } from 'react';
 //   { id: 4, name: 'Entertainment', type: 'EXPENSE' },
 // ];
 
-
 const Categories = () => {
   // const [categories, setCategories] = useState(initialCategories);
   const [categories, setCategories] = useState([]);
@@ -22,21 +21,36 @@ const Categories = () => {
   const token = localStorage.getItem("token");
 
   // Load categories from API
-  const fetchCategories = async () => {
-    try {
-    const res = await axios.get("http://localhost:8080/api/categories/list", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-      setCategories(res.data);
-    } catch (err) {
-      console.error(err);
-      setError('Failed to load categories');
-    } finally {
-      setLoading(false);
-    }
-  };
+    const fetchCategories = async () => {
+      try {
+        setLoading(true);
+        const res = await axios.get("http://localhost:8080/api/categories/list", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setCategories(res.data);
+        setError('');
+      } catch (err) {
+        console.error(err);
+        setError('Failed to load categories');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    useEffect(() => {
+      if (token) {
+        fetchCategories();
+      } else {
+        setLoading(false);
+        setError('No token found');
+      }
+    }, [token]);
+  //   if (token) {
+  //     fetchCategories();
+  //   }
+  // }, [token]);
 
   // const handleAddCategory = () => {
   //   if (!categoryName) return;
@@ -84,7 +98,7 @@ const Categories = () => {
   //   setCategories(categories.filter((category) => category.id !== id));
   // };
 
-      const handleDeleteCategory = async (id) => {
+  const handleDeleteCategory = async (id) => {
     try {
       await axios.delete(`http://localhost:8080/api/categories/${id}`, {
         headers: {
