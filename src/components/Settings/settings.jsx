@@ -49,44 +49,44 @@ const Settings = () => {
     setSelectedTheme(e.target.value);
   };
 
-  const handleSave = async () => {
-    if (!username.trim()) {
-      setMessage("Username cannot be empty.");
-      return;
-    }
-
-    setLoading(true);
-    setMessage(null);
-
-    try {
-      const res = await axios.put(
-        "http://localhost:8080/api/user/update/profile",
-        { username: username.trim() },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      setUser(res.data);
-      setMessage("Settings saved successfully!");
-
-      setTheme(selectedTheme);
-    } catch (error) {
-      setMessage(
-        error.response?.data || "Failed to save settings. Please try again."
-      );
-    } finally {
-      setLoading(false);
-    }
-  };
-
   // const handleSave = async () => {
-  //     setTheme(selectedTheme); //Test
-  //     setLoading(false);
+  //   if (!username.trim()) {
+  //     setMessage("Username cannot be empty.");
+  //     return;
+  //   }
+
+  //   setLoading(true);
+  //   setMessage(null);
+
+  //   try {
+  //     const res = await axios.put(
+  //       "http://localhost:8080/api/user/update/profile",
+  //       { username: username.trim() },
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //       }
+  //     );
+
+  //     setUser(res.data);
   //     setMessage("Settings saved successfully!");
+
+  //     setTheme(selectedTheme);
+  //   } catch (error) {
+  //     setMessage(
+  //       error.response?.data || "Failed to save settings. Please try again."
+  //     );
+  //   } finally {
+  //     setLoading(false);
+  //   }
   // };
+
+  const handleSave = async () => {
+      setTheme(selectedTheme); //Test
+      setLoading(false);
+      setMessage("Settings saved successfully!");
+  };
 
   return (
     <div
