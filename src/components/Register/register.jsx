@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
+import { MdPerson, MdEmail, MdLock } from 'react-icons/md';
 
 const Register = () => {
   const navigate = useNavigate();
@@ -47,18 +48,19 @@ const Register = () => {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-100">
-      <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-lg">
+    <div
+      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-sky-500 via-teal-400 to-emerald-400 px-4"
+      style={{ fontFamily: "'Poppins', sans-serif" }}
+    >
+      <div className="max-w-md w-full bg-white rounded-2xl shadow-2xl p-10 space-y-8">
         <div className="text-center">
-          <h2 className="text-3xl font-bold text-gray-800">Create Account</h2>
-          <p className="text-sm text-gray-500">Sign up to get started</p>
+          <h1 className="text-4xl font-extrabold text-gray-800 mb-2">Create Account</h1>
+          <p className="text-gray-500 text-sm">Sign up to get started</p>
         </div>
 
-        <form onSubmit={handleRegister} className="space-y-5">
-          <div>
-            <label htmlFor="username" className="block text-sm font-medium text-gray-600">
-              Username
-            </label>
+        <form onSubmit={handleRegister} className="space-y-6">
+          <div className="relative">
+            <MdPerson className="absolute left-3 top-1/2 transform -translate-y-1/2 text-teal-500 text-xl" />
             <input
               id="username"
               name="username"
@@ -66,15 +68,13 @@ const Register = () => {
               value={formData.username}
               onChange={handleChange}
               required
-              className="w-full mt-1 px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-              placeholder="Your username"
+              placeholder="Username"
+              className="w-full pl-12 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-400 transition"
             />
           </div>
 
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-600">
-              Email Address
-            </label>
+          <div className="relative">
+            <MdEmail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-teal-500 text-xl" />
             <input
               id="email"
               name="email"
@@ -82,15 +82,13 @@ const Register = () => {
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-full mt-1 px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-              placeholder="you@example.com"
+              placeholder="Email address"
+              className="w-full pl-12 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-400 transition"
             />
           </div>
 
-          <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-600">
-              Password
-            </label>
+          <div className="relative">
+            <MdLock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-teal-500 text-xl" />
             <input
               id="password"
               name="password"
@@ -98,15 +96,13 @@ const Register = () => {
               value={formData.password}
               onChange={handleChange}
               required
-              className="w-full mt-1 px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-              placeholder="••••••••"
+              placeholder="Password"
+              className="w-full pl-12 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-400 transition"
             />
           </div>
 
-          <div>
-            <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-600">
-              Confirm Password
-            </label>
+          <div className="relative">
+            <MdLock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-teal-500 text-xl" />
             <input
               id="confirmPassword"
               name="confirmPassword"
@@ -114,30 +110,38 @@ const Register = () => {
               value={formData.confirmPassword}
               onChange={handleChange}
               required
-              className="w-full mt-1 px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-              placeholder="••••••••"
+              placeholder="Confirm password"
+              className="w-full pl-12 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-400 transition"
             />
           </div>
 
-          {error && <p className="text-center text-red-600 text-sm font-semibold">{error}</p>}
+          {error && (
+            <p className="text-center text-red-600 text-sm font-medium">{error}</p>
+          )}
 
           <button
             type="submit"
             disabled={loading}
-            className={`w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition duration-200 ${
-              loading ? 'opacity-60 cursor-not-allowed' : ''
-            }`}
+            className={`w-full py-3 rounded-lg text-white font-semibold tracking-wide
+              bg-gradient-to-r from-sky-500 via-teal-500 to-emerald-500
+              hover:from-emerald-500 hover:to-sky-500
+              transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-teal-300
+              ${loading ? 'opacity-70 cursor-not-allowed animate-pulse' : ''}
+            `}
           >
             {loading ? 'Registering...' : 'Sign Up'}
           </button>
         </form>
 
-        <div className="text-sm text-center text-gray-500">
-          Already have an account?{' '}       {/* Check if user is already logged in */}
-          <Link to="/login" className="text-blue-500 hover:underline">
+        <p className="text-center text-gray-600 text-sm">
+          Already have an account?{' '}
+          <Link
+            to="/login"
+            className="text-teal-600 font-semibold hover:text-emerald-600 transition"
+          >
             Sign in
           </Link>
-        </div>
+        </p>
       </div>
     </div>
   );

@@ -1,143 +1,157 @@
 import React from 'react';
-import { Bar, Doughnut } from 'react-chartjs-2'; // Import chart
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement } from 'chart.js';
+import { Bar, Doughnut } from 'react-chartjs-2';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+  ArcElement,
+} from 'chart.js';
+
 ChartJS.register(
-  CategoryScale, 
-  LinearScale, 
-  BarElement, 
-  Title, 
-  Tooltip, 
-  Legend, 
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
   ArcElement
 );
 
 const contractByStagesData = {
   labels: ['Income', 'Food', 'Transportation', 'Entertainment'],
-  datasets: [{
-    label: 'Contracts',
-    data: [350, 200, 450, 150],
-    backgroundColor: ['#4CAF50', '#FF9800', '#F44336', '#2196F3'],
-      borderColor: ['#4CAF50', '#FF9800', '#F44336', '#2196F3'],
+  datasets: [
+    {
+      label: 'Contracts',
+      data: [350, 200, 450, 150],
+      backgroundColor: ['#0ea5e9', '#06b6d4', '#14b8a6', '#2dd4bf'],
+      borderColor: ['#0ea5e9', '#06b6d4', '#14b8a6', '#2dd4bf'],
       borderWidth: 1,
-    borderRadius: 4,
-    barThickness: 30,
-  }],
+      borderRadius: 6,
+      barThickness: 30,
+    },
+  ],
 };
 
 const contractExpiringData = {
-  labels: ['Within 60 days', 'Within 30 days', 'Expired'],
-  datasets: [{
-    data: [45, 25, 30],
-    backgroundColor: ['#2dd4bf', '#fbbf24', '#F44336'],
-    hoverBackgroundColor: ['#14b8a6', '#f59e0b', '#F44336'],
-    borderColor: '#fff',
-    borderWidth: 4,
-  }],
-
+  labels: ['Income', 'Expenses', 'Balance'],
+  datasets: [
+    {
+      data: [2500, 1200, 1140],
+      backgroundColor: ['#0ea5e9', '#14b8a6', '#06b6d4'],
+      hoverBackgroundColor: ['#38bdf8', '#2dd4bf', '#22d3ee'],
+      borderColor: '#fff',
+      borderWidth: 4,
+    },
+  ],
 };
- 
+
 const Home = () => {
   return (
-      <main className="flex-1 p-8">
-        <header className="flex justify-between items-center mb-8">
-         <h1 className="text-3xl font-bold ml-4 text-green-500 dark:text-green-400">
-            Expense Management
-          </h1>
-        </header>
+    <main
+      className="flex-1 p-8 min-h-screen bg-gradient-to-br from-sky-100 via-teal-50 to-emerald-100"
+      style={{ fontFamily: "'Poppins', sans-serif" }}
+    >
+      <header className="flex justify-between items-center mb-8">
+        <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-500 via-teal-500 to-emerald-500 ml-4">
+          Expense Management
+        </h1>
+      </header>
 
-        {/* Total */}
-        <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <div className="bg-white p-4 rounded-lg shadow">
-            <div className="flex items-center">
-              <div className="w-2 h-2 rounded-full mr-2 bg-teal-500"></div>
-              <h3 className="text-sm font-medium text-gray-500">Total Income</h3>
-            </div>
-            <p className="text-2xl font-bold mt-2 text-gray-900 dark:text-gray-100">$2,500</p>
-          </div>
-          <div className="bg-white p-4 rounded-lg shadow">
-            <div className="flex items-center">
-              <div className="w-2 h-2 rounded-full mr-2 bg-amber-500"></div>
-              <h3 className="text-sm font-medium text-gray-500">Total Expenses</h3>
-            </div>
-            <p className="text-2xl font-bold mt-2 text-gray-900 dark:text-gray-100">$1,200</p>
-          </div>
-          <div className="bg-white p-4 rounded-lg shadow">
-            <div className="flex items-center">
-              <div className="w-2 h-2 rounded-full mr-2 bg-blue-500"></div>
-              <h3 className="text-sm font-medium text-gray-500">Remaining Balance</h3>
-            </div>
-            <p className="text-2xl font-bold mt-2 text-gray-900 dark:text-gray-100">$1,140</p>
-          </div>
-        </section>
+      {/* Totals */}
+      <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div className="bg-white p-6 rounded-xl shadow-lg border-l-4 border-sky-400 hover:shadow-xl transition">
+          <h3 className="text-sm font-medium text-gray-500">Total Income</h3>
+          <p className="text-3xl font-bold mt-2 text-sky-600">$2,500</p>
+        </div>
 
-        {/* Chart Income vs Expenses and Contract by Stages */}
-        <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="lg:col-span-2 space-y-6">
-          <div className="bg-white p-6 rounded-lg shadow">
-            <h4 className="font-bold text-lg mb-4">Income vs Expenses</h4>
-            <div className="w-full max-w-[400px] mx-auto">
-              <Doughnut data={contractExpiringData} options={{ responsive: true, plugins: { legend: { position: 'bottom' } } }} />
-            </div>
+        <div className="bg-white p-6 rounded-xl shadow-lg border-l-4 border-teal-400 hover:shadow-xl transition">
+          <h3 className="text-sm font-medium text-gray-500">Total Expenses</h3>
+          <p className="text-3xl font-bold mt-2 text-teal-600">$1,200</p>
+        </div>
+
+        <div className="bg-white p-6 rounded-xl shadow-lg border-l-4 border-emerald-400 hover:shadow-xl transition">
+          <h3 className="text-sm font-medium text-gray-500">Remaining Balance</h3>
+          <p className="text-3xl font-bold mt-2 text-emerald-600">$1,140</p>
+        </div>
+      </section>
+
+      {/* Charts */}
+      <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Doughnut Chart */}
+        <div className="bg-white p-6 rounded-xl shadow-lg">
+          <h4 className="font-bold text-lg mb-4 text-gray-800">Income vs Expenses</h4>
+          <div className="w-full max-w-[400px] mx-auto">
+            <Doughnut
+              data={contractExpiringData}
+              options={{
+                responsive: true,
+                plugins: {
+                  legend: { position: 'bottom' },
+                },
+              }}
+            />
           </div>
         </div>
 
-          <div className="bg-white p-6 rounded-lg shadow">
-            <h4 className="font-bold text-lg mb-4">Contract by Stages</h4>
-            <div className="chart-container" >
-              {/* <Bar data={contractByStagesData} options={{ responsive: true, plugins: { legend: { display: false } } }} /> */}
-                <Bar data={contractByStagesData} options={{
-                  responsive: true,
-                  maintainAspectRatio: false, 
-                  plugins: { legend: { display: false } },
-                  scales: 
-                  {x: {
-                      ticks: {
-                        maxRotation: 45,
-                        minRotation: 45,
-                      }
-                    },
-                    y: {
-                      ticks: {
-                        display: false // hide y-axis labels
-                      }
-                    }
-                  }
-                }} />
-            </div>
+        {/* Bar Chart */}
+        <div className="bg-white p-6 rounded-xl shadow-lg">
+          <h4 className="font-bold text-lg mb-4 text-gray-800">Contract by Stages</h4>
+          <div className="h-[300px]">
+            <Bar
+              data={contractByStagesData}
+              options={{
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                  x: {
+                    ticks: { color: '#4b5563' },
+                  },
+                  y: {
+                    ticks: { color: '#9ca3af' },
+                  },
+                },
+              }}
+            />
           </div>
-
-          <div className="bg-white p-6 rounded-lg shadow">
-            <h4 className="font-bold text-lg mb-4">Expenses by Category</h4>
-            {/* Expenses Category Table */}
-            <table className="w-full text-left">
-              <thead>
-                <tr className="text-sm text-gray-500 border-b">
-                  <th className="py-2 font-medium">Category</th>
-                  <th className="py-2 font-medium">Amount</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="border-b">
-                  <td className="py-4 text-gray-600">Food</td>
-                  <td className="py-4 text-gray-800">$500</td>
-                </tr>
-                <tr className="border-b">
-                  <td className="py-4 text-gray-600">Transportation</td>
-                  <td className="py-4 text-gray-800">$400</td>
-                </tr>
-                <tr className="border-b">
-                  <td className="py-4 text-gray-600">Entertainment</td>
-                  <td className="py-4 text-gray-800">$300</td>
-                </tr>
-                <tr className="border-b">
-                  <td className="py-4 text-gray-600">Bills</td>
-                  <td className="py-4 text-gray-800">$200</td>
-                </tr>
-              </tbody>
-            </table>
         </div>
-        </section>
-      </main>
+
+        {/* Table */}
+        <div className="lg:col-span-2 bg-white p-6 rounded-xl shadow-lg">
+          <h4 className="font-bold text-lg mb-4 text-gray-800">Expenses by Category</h4>
+          <table className="w-full text-left border-t border-gray-200">
+            <thead>
+              <tr className="text-sm text-gray-500 border-b">
+                <th className="py-3 font-semibold">Category</th>
+                <th className="py-3 font-semibold">Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b hover:bg-gray-50 transition">
+                <td className="py-3 text-gray-600">Food</td>
+                <td className="py-3 text-gray-800">$500</td>
+              </tr>
+              <tr className="border-b hover:bg-gray-50 transition">
+                <td className="py-3 text-gray-600">Transportation</td>
+                <td className="py-3 text-gray-800">$400</td>
+              </tr>
+              <tr className="border-b hover:bg-gray-50 transition">
+                <td className="py-3 text-gray-600">Entertainment</td>
+                <td className="py-3 text-gray-800">$300</td>
+              </tr>
+              <tr className="hover:bg-gray-50 transition">
+                <td className="py-3 text-gray-600">Bills</td>
+                <td className="py-3 text-gray-800">$200</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
   );
 };
 

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
+import { MdEmail, MdLock } from 'react-icons/md';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -39,18 +40,19 @@ const Login = () => {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-100">
-      <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-lg">
+    <div
+      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-sky-500 via-teal-400 to-emerald-400 px-4"
+      style={{ fontFamily: "'Poppins', sans-serif" }}
+    >
+      <div className="max-w-md w-full bg-white rounded-2xl shadow-2xl p-10 space-y-8">
         <div className="text-center">
-          <h2 className="text-3xl font-bold text-gray-800">Welcome</h2>
-          <p className="text-sm text-gray-500">Please login to your account</p>
+          <h1 className="text-4xl font-extrabold text-gray-800 mb-2">Welcome Back!</h1>
+          <p className="text-gray-500 text-sm">Sign in to your account to continue</p>
         </div>
 
-        <form onSubmit={handleLogin} className="space-y-5">
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-600">
-              Email
-            </label>
+        <form onSubmit={handleLogin} className="space-y-6">
+          <div className="relative">
+            <MdEmail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-teal-500 text-xl" />
             <input
               id="email"
               name="email"
@@ -58,15 +60,14 @@ const Login = () => {
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-full mt-1 px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-              placeholder="you@example.com"
+              className="w-full pl-12 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-400 transition"
+              placeholder="Email address"
+              autoComplete="email"
             />
           </div>
 
-          <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-600">
-              Password
-            </label>
+          <div className="relative">
+            <MdLock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-teal-500 text-xl" />
             <input
               id="password"
               name="password"
@@ -74,34 +75,39 @@ const Login = () => {
               value={formData.password}
               onChange={handleChange}
               required
-              className="w-full mt-1 px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-              placeholder="••••••••"
+              className="w-full pl-12 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-400 transition"
+              placeholder="Password"
+              autoComplete="current-password"
             />
           </div>
 
           {error && (
-            <div className="text-sm text-red-500 text-center">
-              {error}
-            </div>
+            <div className="text-center text-red-600 text-sm font-medium">{error}</div>
           )}
 
           <button
             type="submit"
             disabled={loading}
-            className={`w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition duration-200 ${
-              loading && 'opacity-60 cursor-not-allowed'
-            }`}
+            className={`w-full py-3 rounded-lg text-white font-semibold tracking-wide
+              bg-gradient-to-r from-sky-500 via-teal-500 to-emerald-500
+              hover:from-emerald-500 hover:to-sky-500
+              transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-teal-300
+              ${loading ? 'opacity-70 cursor-not-allowed animate-pulse' : ''}
+            `}
           >
             {loading ? 'Signing In...' : 'Sign In'}
           </button>
         </form>
 
-        <div className="text-sm text-center text-gray-500">
-          Don't have an account?{' '}
-          <Link to="/register" className="text-blue-500 hover:underline">
+        <p className="text-center text-gray-600 text-sm">
+          Don’t have an account?{' '}
+          <Link
+            to="/register"
+            className="text-teal-600 font-semibold hover:text-emerald-600 transition"
+          >
             Sign up
           </Link>
-        </div>
+        </p>
       </div>
     </div>
   );

@@ -2,7 +2,8 @@ import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
 import { useEffect } from 'react';
-
+import { FaSave } from "react-icons/fa";
+import { MdCancel } from "react-icons/md";
 
 
 // Sample categories data (temporary)
