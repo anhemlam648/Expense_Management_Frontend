@@ -1,13 +1,14 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState} from "react";
+// import { useContext } from "react";
 import axios from "axios";
-import { ThemeContext } from "../ThemeContext/themecontext";
+// import { ThemeContext } from "../ThemeContext/themecontext";
 
 const Settings = () => {
   const token = localStorage.getItem("token");
   const [user, setUser] = useState(null);
   const [username, setUsername] = useState("");
-  const { theme, setTheme } = useContext(ThemeContext); 
-  const [selectedTheme, setSelectedTheme] = useState(theme); 
+  // const { theme, setTheme } = useContext(ThemeContext); 
+  // const [selectedTheme, setSelectedTheme] = useState(theme); 
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState(null);
 
@@ -33,9 +34,9 @@ const Settings = () => {
   }, [token]);
 
 
-  useEffect(() => {
-    setSelectedTheme(theme);
-  }, [theme]);
+  // useEffect(() => {
+  //   setSelectedTheme(theme);
+  // }, [theme]);
 
   // Avatar initials
   const getInitial = () => {
@@ -45,9 +46,9 @@ const Settings = () => {
     return "U";
   };
 
-  const handleThemeChange = (e) => {
-    setSelectedTheme(e.target.value);
-  };
+  // const handleThemeChange = (e) => {
+  //   setSelectedTheme(e.target.value);
+  // };
 
   const handleSave = async () => {
     if (!username.trim()) {
@@ -72,7 +73,7 @@ const Settings = () => {
       setUser(res.data);
       setMessage("Settings saved successfully!");
 
-      setTheme(selectedTheme);
+      // setTheme(selectedTheme);
     } catch (error) {
       setMessage(
         error.response?.data || "Failed to save settings. Please try again."
@@ -90,11 +91,12 @@ const Settings = () => {
 
   return (
     <div
-      className={`flex-1 min-h-screen py-8 px-4 sm:px-6 lg:px-8 ${
-        theme === "dark"
-          ? "bg-gray-900 text-white"
-          : "bg-gray-100 text-gray-900"
-      }`}
+      // className={`flex-1 min-h-screen py-8 px-4 sm:px-6 lg:px-8 ${
+      //   theme === "dark"
+      //     ? "bg-gray-900 text-white"
+      //     : "bg-gray-100 text-gray-900"
+      // }`}
+      className="flex-1 min-h-screen py-8 px-4 sm:px-6 lg:px-8 bg-gray-100 text-gray-900"
     >
       <div className="max-w-3xl mx-auto w-full">
         <header className="mb-10 text-center">
@@ -102,9 +104,10 @@ const Settings = () => {
             Profile Settings
           </h1>
           <p
-            className={`mt-2 text-sm sm:text-base ${
-              theme === "dark" ? "text-gray-300" : "text-gray-500"
-            }`}
+            // className={`mt-2 text-sm sm:text-base ${
+            //   theme === "dark" ? "text-gray-300" : "text-gray-500"
+            // }`}
+             className="mt-2 text-sm sm:text-base text-gray-500"
           >
             Manage your profile and preferences
           </p>
@@ -113,9 +116,10 @@ const Settings = () => {
         {/* Profile Section */}
         {user ? (
           <section
-            className={`p-6 sm:p-8 rounded-xl shadow-md mb-8 ${
-              theme === "dark" ? "bg-gray-800" : "bg-white"
-            }`}
+            // className={`p-6 sm:p-8 rounded-xl shadow-md mb-8 ${
+            //   theme === "dark" ? "bg-gray-800" : "bg-white"
+            // }`}
+            className="p-6 sm:p-8 rounded-xl shadow-md mb-8 bg-white"
           >
             <div className="flex flex-col items-center text-center">
               <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-teal-400 to-teal-600 text-white rounded-full shadow-lg flex items-center justify-center text-3xl sm:text-4xl font-bold mb-4">
@@ -127,19 +131,21 @@ const Settings = () => {
                 type="text"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                className={`text-xl sm:text-2xl font-semibold border-b-2 focus:outline-none px-1 mb-2 text-center w-full max-w-xs ${
-                  theme === "dark"
-                    ? "text-white border-teal-400 bg-gray-900"
-                    : "text-gray-800 border-teal-600 bg-white"
-                }`}
+                // className={`text-xl sm:text-2xl font-semibold border-b-2 focus:outline-none px-1 mb-2 text-center w-full max-w-xs ${
+                //   theme === "dark"
+                //     ? "text-white border-teal-400 bg-gray-900"
+                //     : "text-gray-800 border-teal-600 bg-white"
+                // }`}
+                className="text-xl sm:text-2xl font-semibold border-b-2 focus:outline-none px-1 mb-2 text-center w-full max-w-xs text-gray-800 border-teal-600 bg-white"
                 placeholder="Enter your username"
               />
 
-              <p
+              {/* <p
                 className={`text-sm sm:text-base ${
                   theme === "dark" ? "text-gray-300" : "text-gray-500"
                 }`}
-              >
+              > */}
+              <p className="text-sm sm:text-base text-gray-500">
                 {user.email}
               </p>
             </div>
@@ -149,7 +155,7 @@ const Settings = () => {
         )}  
 
         {/* Theme Settings */}
-        <section
+        {/* <section
           className={`p-6 rounded-xl shadow mb-8 ${
             theme === "dark" ? "bg-gray-800" : "bg-white"
           }`}
@@ -197,7 +203,7 @@ const Settings = () => {
               </span>
             </label>
           </div>
-        </section>
+        </section> */}
 
         {/* Save Button */}
         <div className="text-center">

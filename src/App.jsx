@@ -1,4 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
+// import { useContext } from "react";
+// import { ThemeContext } from "./components/ThemeContext/themecontext";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Home/home";
 import Categories from "./components/Categories/categories";
@@ -9,18 +11,19 @@ import Footer from "./components/Footer/footer";
 import Login from "./components/Login/login";
 import Register from "./components/Register/register";
 import PrivateRoute from "./components/Private/privaterouter";
-import ThemeProvider, { ThemeContext } from "./components/ThemeContext/themecontext";
-import "./App.css";
+// import ThemeProvider, { ThemeContext } from "./components/ThemeContext/themecontext";
+// import "./App.css";
 
 function AppContent() {
-  const { theme } = useContext(ThemeContext);
+  // const { theme } = useContext(ThemeContext);
 
   return (
-    <div
-      className={`font-sans flex min-h-screen ${
-        theme === "dark" ? "bg-gray-900 text-white" : "bg-gray-100 text-gray-900"
-      }`}
-    >
+    // <div
+    //   className={`font-sans flex min-h-screen ${
+    //     theme === "dark" ? "bg-gray-900 text-white" : "bg-gray-100 text-gray-900"
+    //   }`}
+    // >
+    <div className="font-sans flex min-h-screen">
       <Header />
       <div className="flex-1 flex flex-col">
         <main className="flex-1">
@@ -39,17 +42,17 @@ function AppContent() {
         </main>
         <Footer />
       </div>
-    </div>
+      </div>
   );
 }
 
 function App() {
   return (
-    <ThemeProvider>
+    // <ThemeProvider>
       <Router>
         <AppContent />
       </Router>
-    </ThemeProvider>
+    // </ThemeProvider>
   );
 }
 

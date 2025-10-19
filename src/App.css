@@ -1,8 +1,10 @@
 /* App.css */
 body.light {
-  background-color: #fff;
+  background: linear-gradient(to bottom right, #e0f2fe, #ccfbf1, #d1fae5);
+  color: #111827;
 }
 
 body.dark {
-  background-color: #374d51; 
+  background: linear-gradient(to bottom right, #0f172a, #1e293b, #111827);
+  color: #f1f5f9;
 }

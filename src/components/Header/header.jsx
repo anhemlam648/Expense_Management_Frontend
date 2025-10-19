@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
+// import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom'; 
-import { ThemeContext } from "../ThemeContext/themecontext"; 
+// import { ThemeContext } from "../ThemeContext/themecontext"; 
 
 const Header = () => {
   const navigate = useNavigate(); 
-  const { theme } = useContext(ThemeContext);
+  // const { theme } = useContext(ThemeContext);
 
   const handleNavigation = (path) => {
     navigate(path); 
@@ -29,17 +30,23 @@ const Header = () => {
   const SidebarIcon = ({ icon, label, path }) => (
     <button
       onClick={() => handleNavigation(path)} 
-      className={`flex flex-col items-center justify-center w-full h-16 transition-colors duration-200
-        ${theme === "dark" ? "text-gray-300 hover:bg-gray-700 hover:text-white" : "text-gray-500 hover:bg-gray-200 hover:text-gray-800"}`}
-    >
+    //   className={`flex flex-col items-center justify-center w-full h-16 transition-colors duration-200
+    //     ${theme === "dark" ? "text-gray-300 hover:bg-gray-700 hover:text-white" : "text-gray-500 hover:bg-gray-200 hover:text-gray-800"}`}
+    // >
+         className={`flex flex-col items-center justify-center w-full h-16 transition-colors duration-200
+         "text-gray-300 hover:bg-gray-700 hover:text-white" : "text-gray-500 hover:bg-gray-200 hover:text-gray-800"}`}
+       >
       {icon}
       <span className="text-xs mt-1">{label}</span>
     </button>
   );
 
   return (
+    // <aside className={`w-20 flex flex-col items-center py-4 shadow-md
+    //   ${theme === "dark" ? "bg-gray-900 text-white" : "bg-white text-gray-900"}`}>
     <aside className={`w-20 flex flex-col items-center py-4 shadow-md
-      ${theme === "dark" ? "bg-gray-900 text-white" : "bg-white text-gray-900"}`}>
+       "bg-gray-900 text-white" : "bg-white text-gray-900"}`}>
+  
       <nav className="flex flex-col space-y-4 w-full">
         <SidebarIcon 
           icon={<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
