@@ -2,8 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
 import { useEffect } from 'react';
-import { FaSave } from "react-icons/fa";
-import { MdCancel } from "react-icons/md";
+
 
 
 // Sample categories data (temporary)
@@ -122,21 +121,21 @@ const Categories = () => {
     }
   };
 
-   // 🟢 Start editing
+   // Start editing
   const handleEditClick = (category) => {
     setEditingId(category.id);
     setEditName(category.name);
     setEditType(category.type);
   };
 
-  // 🟢 Cancel editing
+  // Cancel editing
   const handleCancelEdit = () => {
     setEditingId(null);
     setEditName("");
     setEditType("EXPENSE");
   };
 
-  // 🟢 Update Category (PUT API)
+  // Update Category (PUT API)
   const handleUpdateCategory = async () => {
     if (!editName.trim()) {
       alert("Category name cannot be empty!");
