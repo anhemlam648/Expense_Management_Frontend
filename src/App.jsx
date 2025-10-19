@@ -6,8 +6,8 @@ import Statistics from "./components/Statistics/statistics";
 import Settings from "./components/Settings/settings";
 import Header from "./components/Header/header";
 import Footer from "./components/Footer/footer";
-// import Login from "./components/Login/login";
-// import Register from "./components/Register/register";
+import Login from "./components/Login/login";
+import Register from "./components/Register/register";
 import PrivateRoute from "./components/Private/privaterouter";
 import ThemeProvider, { ThemeContext } from "./components/ThemeContext/themecontext";
 import "./App.css";
@@ -25,16 +25,16 @@ function AppContent() {
       <div className="flex-1 flex flex-col">
         <main className="flex-1">
           <Routes>
-            {/* <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} /> */}
-            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            {/* <Route path="/" element={<Home />} />
             <Route path="/Categories" element={<Categories />} />
             <Route path="/Statistics" element={<Statistics />} />
-            <Route path="/Settings" element={<Settings />} />
-            {/* <Route path="/" element={<PrivateRoute><Home /></PrivateRoute>} />
+            <Route path="/Settings" element={<Settings />} /> */}
+            <Route path="/" element={<PrivateRoute><Home /></PrivateRoute>} />
             <Route path="/Categories" element={<PrivateRoute><Categories /></PrivateRoute>} />
             <Route path="/Statistics" element={<PrivateRoute><Statistics /></PrivateRoute>} />
-            <Route path="/Settings" element={<PrivateRoute><Settings /></PrivateRoute>} /> */}
+            <Route path="/Settings" element={<PrivateRoute><Settings /></PrivateRoute>} />
           </Routes>
         </main>
         <Footer />
