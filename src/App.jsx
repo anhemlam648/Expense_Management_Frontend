@@ -36,7 +36,7 @@ function AppContent() {
             <Route path="/Statistics" element={<Statistics />} />
             <Route path="/Settings" element={<Settings />} /> */}
             <Route path="/" element={<PrivateRoute><Home /></PrivateRoute>} />
-            <Route path="/transaction" element={<PrivateRoute><Transaction /></PrivateRoute>} />
+            <Route path="/transaction" element={<PrivateRoute><Transaction /></PrivateRoute>} /> // new route
             <Route path="/Categories" element={<PrivateRoute><Categories /></PrivateRoute>} />
             <Route path="/Statistics" element={<PrivateRoute><Statistics /></PrivateRoute>} />
             <Route path="/Settings" element={<PrivateRoute><Settings /></PrivateRoute>} />
