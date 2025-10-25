@@ -49,11 +49,24 @@ const Header = () => {
   
       <nav className="flex flex-col space-y-4 w-full">
         <SidebarIcon 
-          icon={<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M3 6h18M3 14h18M3 18h18" />
-          </svg>} 
-          label="Transactions" 
+          icon={
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 9.75L12 3l9 6.75V21a1.5 1.5 0 01-1.5 1.5H4.5A1.5 1.5 0 013 21V9.75z" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 22V12h6v10" />
+            </svg>
+          } 
+          label="Home" 
           path="/" 
+        />
+        <SidebarIcon 
+          icon={
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <rect x="2" y="6" width="20" height="12" rx="2" ry="2" strokeWidth={2} stroke="currentColor" fill="none"/>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v4m0-4a2 2 0 100 4 2 2 0 000-4" />
+            </svg>
+          } 
+          label="Transactions" 
+          path="/transaction" 
         />
         <SidebarIcon 
           icon={<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

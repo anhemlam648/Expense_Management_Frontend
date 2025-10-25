@@ -11,6 +11,7 @@ import Footer from "./components/Footer/footer";
 import Login from "./components/Login/login";
 import Register from "./components/Register/register";
 import PrivateRoute from "./components/Private/privaterouter";
+import Transaction from "./components/Transaction/transaction";
 // import ThemeProvider, { ThemeContext } from "./components/ThemeContext/themecontext";
 // import "./App.css";
 
@@ -35,6 +36,7 @@ function AppContent() {
             <Route path="/Statistics" element={<Statistics />} />
             <Route path="/Settings" element={<Settings />} /> */}
             <Route path="/" element={<PrivateRoute><Home /></PrivateRoute>} />
+            <Route path="/transaction" element={<PrivateRoute><Transaction /></PrivateRoute>} />
             <Route path="/Categories" element={<PrivateRoute><Categories /></PrivateRoute>} />
             <Route path="/Statistics" element={<PrivateRoute><Statistics /></PrivateRoute>} />
             <Route path="/Settings" element={<PrivateRoute><Settings /></PrivateRoute>} />
